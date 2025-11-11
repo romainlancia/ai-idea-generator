@@ -1,7 +1,50 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
-    "build": { "dependsOn": ["^build"], "outputs": ["dist/**", ".next/**"] },
-    "lint": {}
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ]
+    },
+    "lint": {
+      "cache": true,
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "eslint.config.*",
+        ".eslintrc.*",
+        "packages/config/eslint/**/*"
+      ]
+    },
+    "lint:fix": {
+      "cache": false,
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "eslint.config.*",
+        "packages/config/eslint/**/*"
+      ]
+    },
+    "format:check": {
+      "cache": true,
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "prettier.config.*",
+        ".prettierrc*",
+        "packages/config/prettier/**/*"
+      ]
+    },
+    "format": {
+      "cache": false,
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$"
+      ]
+    }
   }
 }

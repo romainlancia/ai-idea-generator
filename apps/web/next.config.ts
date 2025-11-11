@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'oaidalleapiprodscus.blob.core.windows.net' },
+      { protocol: 'https', hostname: 'replicate.delivery' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
+  },
+  experimental: { serverActions: { bodySizeLimit: '6mb' } },
 };
 
 export default nextConfig;
