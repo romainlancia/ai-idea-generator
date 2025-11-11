@@ -1,0 +1,17 @@
+{
+  "name": "ai-idea-generator-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.21.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @app/web dev",
+    "dev:api": "pnpm --filter @app/api start:dev",
+    "dev": "concurrently -k -n web,api \"pnpm dev:web\" \"pnpm dev:api\"",
+    "build": "turbo run build",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "turbo": "^2.0.6"
+  },
+  "workspaces": ["apps/*", "packages/*", "infra/*"]
+}
