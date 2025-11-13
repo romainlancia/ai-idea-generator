@@ -21,6 +21,7 @@ export type Project = {
     input: GenerationInput;
     output: GeneratedAsset;
     createdAt: string;
+    quotaLeft: number | null;
 };
 
 
